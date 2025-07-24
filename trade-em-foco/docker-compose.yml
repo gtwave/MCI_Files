@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  trade-em-foco:
+    build: .
+    container_name: trade-em-foco-website
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+    volumes:
+      - ./logs:/var/log/nginx
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+
