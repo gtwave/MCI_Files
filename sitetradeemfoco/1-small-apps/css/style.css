@@ -2249,9 +2249,6 @@ wrapper {
 .carousel img {
   max-width: 400px;
 }
-
-/*# carrossel */
-
 /*# carrossel 2*/
 .carousel-container {
   width: 100%;
@@ -2266,4 +2263,17 @@ wrapper {
   border: 1px solid black; /* Exemplo de borda */
 }
 /*# carrossel 2*/
+
+/*# botão fale com nosso conssultor */
+
+.button-consultant {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #2e7eed;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+}
+
 /*# sourceMappingURL=style.css.map */
