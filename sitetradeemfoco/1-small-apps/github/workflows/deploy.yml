@@ -31,8 +31,7 @@ jobs:
         with:
           server: ${{ secrets.FTP_HOST : ftp://147.93.14.54 }}
           port: 21
-          username: ${{ secrets.FTP_USER : u976833709.tradeemfoco.com.br
-}}
+          username: ${{ secrets.FTP_USER : u976833709.tradeemfoco.com.br}}
           password: ${{ secrets.FTP_PASS : 389773Ju!}}
           local-dir: dist/
           server-dir: /
