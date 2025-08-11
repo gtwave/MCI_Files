@@ -2249,19 +2249,26 @@ wrapper {
 .carousel img {
   max-width: 400px;
 }
+
 /*# carrossel 2*/
 .carousel-container {
   width: 100%;
-  overflow: hidden; /* Para garantir que o conteúdo não ultrapasse a largura */
+  overflow: hidden;
+  /* Para garantir que o conteúdo não ultrapasse a largura */
 }
 
 .carousel-column {
   float: left;
-  width: 25%; /* 100% / 4 colunas */
-  box-sizing: border-box; /* Garante que o padding e border não aumentem a largura */
-  padding: 10px; /* Exemplo de padding */
-  border: 1px solid black; /* Exemplo de borda */
+  width: 25%;
+  /* 100% / 4 colunas */
+  box-sizing: border-box;
+  /* Garante que o padding e border não aumentem a largura */
+  padding: 10px;
+  /* Exemplo de padding */
+  border: 1px solid black;
+  /* Exemplo de borda */
 }
+
 /*# carrossel 2*/
 
 /*# botão fale com nosso conssultor */
@@ -2276,4 +2283,47 @@ wrapper {
   font-size: 16px;
 }
 
+/*# COMEÇO DO CARROSSEL HEADER */
+.slideshow {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.slideshow img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  animation: fade 3s infinite;
+}
+
+.slideshow a {
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 1;
+  }
+  53% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*# FIM DO CARROSSEL HEADER */
 /*# sourceMappingURL=style.css.map */
