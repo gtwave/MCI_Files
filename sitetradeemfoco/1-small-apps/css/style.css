@@ -2326,4 +2326,272 @@ wrapper {
 }
 
 /*# FIM DO CARROSSEL HEADER */
+
+  /*# ============DEPOIMENTO===========*/
+
+#depoimentos {
+    overflow: hidden;
+    position: relative;
+}
+
+#depoimentos img.bgsection {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+#depoimentos::before,
+#depoimentos::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to right, transparent, #023c83, #0080c9, #023c83, transparent);
+    z-index: 2;
+}
+
+#depoimentos::after {
+    top: initial;
+    bottom: 0;
+    display: none;
+}
+
+#depoimentos::before {
+}
+
+#depoimentos header {
+    margin-top: 6rem;
+}
+
+#depoimentos header h2 {
+    font-size: 2rem;
+}
+
+#depoimentos header p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+#depoimentos .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+#depoimentos .cards .card {
+    position: relative;
+    user-select: none;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 1rem;
+}
+
+#depoimentos .cards .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: all 300ms ease-in-out;
+}
+
+#depoimentos .cards .card:hover img {
+    transform: scale(1.04);
+    filter: brightness(1.2);
+}
+
+#depoimentos .wrapper.carrossel {
+    position: relative;
+}
+
+@media (min-width: 1080px) {
+    section#depoimentos header {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    section#depoimentos header h2 {
+        font-size: 3rem;
+    }
+
+    section#depoimentos .content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8rem;
+        align-items: center;
+    }
+
+    section#depoimentos .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 1rem;
+    }
+
+    section#depoimentos header {
+        text-align: left;
+        align-items: start;
+    }
+
+    section#depoimentos header h2 {
+        font-size: 2.7rem;
+    }
+
+    section#depoimentos header p {
+        font-size: 1.4rem;
+    }
+
+    section#depoimentos .wrapper.carrossel {
+        position: relative;
+        width: 100%;
+        padding-inline: 0;
+    }
+
+    section#depoimentos img.logo {
+        display: inherit;
+        position: absolute;
+    }
+}
+
+
+
+@import url('https://fonts.cdnfonts.com/css/tt-fors-trial');
+@import url('https://fonts.cdnfonts.com/css/ncs-radhiumz');
+root {
+    font-size: 62.5%;
+
+    --color-text: #f2fffb;
+    --primary-color: #0080c9;
+    --secondy-color: #023c83;
+    --orange-black: #000205;
+    --gradient: linear-gradient(to right, #023c83, #0080c9);
+    --bg-black: #000205;
+    --bg-white: #f2fffb;
+
+    --nav-height: 7.2rem;
+
+    --ncs: 'NCS Radhiumz', sans-serif;
+    --tts: 'TT Fors Trial', sans-serif;                                             
+}     
+/*# ============FINAL DO DEPOIMENTO===========*/
+
+/*#=====                =====*/
+.u-body {
+    --theme-sheet-width-xl: 1140px;
+    --theme-sheet-width-lg: 940px;
+    --theme-sheet-width-md: 720px;
+    --theme-sheet-width-sm: 540px;
+    --theme-sheet-width-xs: 340px;
+}
+.u-body {
+    color: #111111;
+    background-color: #ffffff;
+    --effect-scale: 1.1;
+}
+body.u-body {
+}
+.u-body {
+    font-family: 'Open Sans', sans-serif;
+}
+.u-body {
+    --animation-fade_in-opacity: 0;
+    --animation-fade_in_up-opacity: 0;
+    --animation-fade_in_left-opacity: 0;
+    --animation-fade_in_right-opacity: 0;
+    --animation-fade_in_down-opacity: 0;
+    --animation-fade_in_up_big-opacity: 0;
+    --animation-fade_in_left_big-opacity: 0;
+    --animation-fade_in_right_big-opacity: 0;
+    --animation-fade_in_down_big-opacity: 0;
+    --animation-fade_out-opacity: 0;
+    --animation-fade_out_up-opacity: 0;
+    --animation-fade_out_left-opacity: 0;
+    --animation-fade_out_right-opacity: 0;
+    --animation-fade_out_down-opacity: 0;
+    --animation-fade_out_up_big-opacity: 0;
+    --animation-fade_out_left_big-opacity: 0;
+    --animation-fade_out_right_big-opacity: 0;
+    --animation-fade_out_down_big-opacity: 0;
+    --animation-rotate_in-rotate: -200deg;
+    --animation-rotate_in_down_left-rotate: -45deg;
+    --animation-rotate_in_down_right-rotate: 45deg;
+    --animation-rotate_in_up_left-rotate: 45deg;
+    --animation-rotate_in_up_right-rotate: -90deg;
+    --animation-rotate_out-rotate: 200deg;
+    --animation-rotate_out_down_left-rotate: 45deg;
+    --animation-rotate_out_down_right-rotate: -45deg;
+    --animation-rotate_out_up_left-rotate: -45deg;
+    --animation-rotate_out_up_right-rotate: 90deg;
+    --animation-roll_in-rotate: -120deg;
+    --animation-roll_in-translate_x: -100%;
+    --animation-roll_out-rotate: 120deg;
+    --animation-roll_out-translate_x: 100%;
+    --animation-zoom_in-scale: 0.3;
+    --animation-zoom_in_down-scale: 0.475;
+    --animation-zoom_in_down-translate_y: 60px;
+    --animation-zoom_in_up-scale: 0.475;
+    --animation-zoom_in_up-translate_y: -60px;
+    --animation-zoom_in_left-scale: 0.475;
+    --animation-zoom_in_left-translate_x: 10px;
+    --animation-zoom_in_right-scale: 0.475;
+    --animation-zoom_in_right-translate_x: -10px;
+    --animation-zoom_out-scale: 0.3;
+    --animation-zoom_out_down-scale: 0.475;
+    --animation-zoom_out_down-translate_y: -60px;
+    --animation-zoom_out_up-scale: 0.475;
+    --animation-zoom_out_up-translate_y: 60px;
+    --animation-zoom_out_left-scale: 0.475;
+    --animation-zoom_out_left-translate_x: 42px;
+    --animation-zoom_out_right-scale: 0.475;
+    --animation-zoom_out_right-translate_x: -42px;
+    --animation-slide_in_down-translate_y: -100%;
+    --animation-slide_in_up-translate_y: 100%;
+    --animation-slide_in_left-translate_x: -100%;
+    --animation-slide_in_right-translate_x: 100%;
+    --animation-slide_out_down-translate_y: 100%;
+    --animation-slide_out_up-translate_y: -100%;
+    --animation-slide_out_left-translate_x: -100%;
+    --animation-slide_out_right-translate_x: 100%;
+    --animation-custom_in-translate_x: 0px;
+    --animation-custom_in-translate_y: 0px;
+    --animation-custom_in-scale: 1;
+    --animation-custom_in-rotate: 0deg;
+    --animation-custom_in-opacity: 0;
+}
+.u-body {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+body, aside, .u-sidebar-block, section, header, footer {
+    position: relative;
+}
+body {
+    height: auto;
+    min-height: 100%;
+}
+body {
+    margin: 0;
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+body {
+    display: block;
+    margin: 8px;
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+/*#=====
+
+
 /*# sourceMappingURL=style.css.map */
