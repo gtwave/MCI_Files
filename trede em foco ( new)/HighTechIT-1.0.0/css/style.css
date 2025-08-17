@@ -13,9 +13,7 @@
      opacity: 1;
  }
 
- p { text-align: justify !important; }
-h1 { text-align: justify !important; }
-h5 { text-align: center !important; }
+
 /*** Spinner End ***/
 
 
@@ -679,5 +677,8 @@ h5 { text-align: center !important; }
     background: var(--bs-secondary);
     border: 0;
 }
+ p { text-align: justify !important; }
+h1 { text-align: justify !important; }
+h5 { text-align: center !important; }
 
 /*** Footer End ***/
