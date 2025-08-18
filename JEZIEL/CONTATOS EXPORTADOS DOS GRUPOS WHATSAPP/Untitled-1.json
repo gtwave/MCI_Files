@@ -1,0 +1,22 @@
+{
+  "name": "trade_em_foco_geral",
+  "language": "pt_BR",
+  "status": "APPROVED",
+  "category": "MARKETING",
+  "components": [
+    {
+      "type": "BODY",
+      "text": "Oi {{1}} 👋\nNa {{2}} você tem acesso a salas ao vivo, treinamentos práticos e até a chance de operar com capital de mesa proprietária 🚀\n\n🔥 Clique no botão abaixo para conhecer:"
+    },
+    {
+      "type": "BUTTONS",
+      "buttons": [
+        {
+          "type": "URL",
+          "text": "Quero Conhecer Agora",
+          "url": "https://tradeemfoco.com.br/"
+        }
+      ]
+    }
+  ]
+}
