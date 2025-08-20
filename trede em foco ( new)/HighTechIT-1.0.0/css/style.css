@@ -678,7 +678,7 @@
     border: 0;
 }
  p { text-align: justify !important; }
-h1 { text-align: justify !important; }
+h1 { text-align: center !important; }
 h5 { text-align: center !important; }
 
 /*** Footer End ***/
