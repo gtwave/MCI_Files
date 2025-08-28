@@ -23,7 +23,7 @@
   --default-color: #ffffff; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #37517e; /* Color for headings, subheadings and title throughout the website */
   --accent-color: #50b52f; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
-  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --surface-color: #460b94; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
@@ -40,13 +40,17 @@
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
-  --background-color: #000000;
-  --surface-color: #ffffff;
+  --background-color: #000000; /* tarja de clintes e patocinios */
+  --surface-color: #9db853;
 }
 
 .dark-background {
-  --background-color: #000000;
-  --default-color: #ffffff;
+  background-image: url(https://i.postimg.cc/JzxgMsmj/fundovitor.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  --background-color: #000000; /* cor da headline*/
+  --default-color: #ffffff;/* texto da sub-headline */
   --heading-color: #ffffff;
   --surface-color: #4668a2;
   --contrast-color: #ffffff;
@@ -3574,4 +3578,11 @@ section,
   padding-left: 5px;
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
+}
+
+.elementor-motion-effects-layer {
+    background-image: url(https://nandohayne.com.br/wp-content/uploads/2024/06/Slice-1-16.webp);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
