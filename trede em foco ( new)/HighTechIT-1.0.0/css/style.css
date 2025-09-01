@@ -319,7 +319,7 @@
 /*** Services Start ***/
 
 .services .services-item {
-    box-shadow: 0 0 60px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
     width: 100%;
     height: 100%;
     border-radius: 10px;

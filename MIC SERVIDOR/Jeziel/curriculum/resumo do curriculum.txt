@@ -1,0 +1,5 @@
+resumo do resummo Jeziel 
+
+Desenvolvedor Front-End com experiência em criação de interfaces responsivas utilizando React.js, TypeScript e APIs REST. Atuo com foco em performance, acessibilidade e otimização de código, sempre com a colaboração de equipes ágeis (Scrum) e ferramentas como Git e Figma. Possuo experiência em design systems, garantindo padronização visual e de componentes. Formado em Análise e Desenvolvimento de Sistemas pela UNOPAR, com forte atuação em soluções de alta qualidade. Busco projetos desafiadores que promovam crescimento técnico e impacto real.
+
+
