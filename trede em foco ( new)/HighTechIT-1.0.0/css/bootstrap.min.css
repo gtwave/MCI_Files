@@ -44,10 +44,10 @@ body{
     font-size:1rem;
     font-weight:400;
     line-height:1.5;
-    color:#787878;
-    background-color:#00111bf5;
+    color:#ffffff;
+    background-color:#020910;
     -webkit-text-size-adjust:100%;
-    -webkit-tap-highlight-color:rgba(0,0,0,0)
+    -webkit-tap-highlight-color:rgba(20,0,0,32)
 }
 hr{
     margin:1rem 0;
@@ -149,7 +149,7 @@ small,.small{
 }
 mark,.mark{
     padding:.2em;
-    background-color:#fcf8e3
+    background-color:hsl(50, 100%, 35%)
 }
 sub,sup{
     position:relative;
@@ -6398,8 +6398,8 @@ textarea.form-control-lg{
 .bg-danger{
     background-color:#dc3545 !important
 }
-.bg-light{
-    background-color:#f8f8f9 !important
+.bg-light{     
+background: -webkit-linear-gradient(20deg, #000000,#000000,#021392);background: linear-gradient(20deg, #000000,#000000,#021392);!important
 }
 .bg-dark{
     background-color:#000103 !important
