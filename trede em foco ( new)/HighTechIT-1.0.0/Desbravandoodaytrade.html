@@ -1,809 +1,1514 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
-<head>
-    <meta charset="utf-8">
-    <title>Trade em Foco</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image" href="imagens/icon da aba.png" />
+    <head>
+        <meta charset="utf-8">
+        <title>Trade em Foco</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image" href="imagens/icon da aba.png" />
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap"
-        rel="stylesheet">
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Saira:wght@500;600;700&display=swap"
+            rel="stylesheet">
 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+        <!-- Icon Font Stylesheet -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Desbravando o Day Trade</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+            rel="stylesheet">
+             <style>
+        :root {
+            --neon-green: #39ff14;
+            --neon-blue: #00ffff;
+            --neon-purple: #bf00ff;
+            --dark-bg: #0a0a0a;
+            --dark-section: #101010;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--neon-green);
+            transition: width 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--neon-green);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .header-cta {
+            padding: 10px 25px;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+            color: var(--dark-bg);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 700;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+        }
+        
+        .header-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(57, 255, 20, 0.8);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 100px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), url('https://i.im.ge/2025/09/06/ndGhNx.fundo-head.jpeg') center/cover no-repeat;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(57, 255, 20, 0.1);
+            color: var(--neon-green);
+            border-radius: 30px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid var(--neon-green);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            color: var(--text-secondary);
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+            color: var(--dark-bg);
+            box-shadow: 0 0 25px rgba(57, 255, 20, 0.5);
+            z-index: 1;
+        }
+        
+        .btn-primary:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: -1;
+        }
+        
+        .btn-primary:hover:before {
+            left: 100%;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 35px rgba(57, 255, 20, 0.8);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--neon-blue);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--neon-blue);
+            color: var(--dark-bg);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+            transform: translateY(-5px);
+        }
+        
+        .hero-scroll {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .hero-scroll i {
+            color: var(--neon-green);
+            animation: bounce 2s infinite;
+        }
+        
+        /* Results Section */
+        .results {
+            padding: 100px 0;
+            background: var(--dark-section);
+            position: relative;
+        }
+        
+        .results:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 60px;
+            font-weight: 800;
+        }
+        
+        .section-title span {
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .stat {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: var(--dark-bg);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            background: var(--dark-section);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 0;
+            background: linear-gradient(to bottom, var(--neon-green), var(--neon-blue));
+            transition: height 0.5s ease;
+        }
+        
+        .feature-card:hover:before {
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--neon-green);
+        }
+        
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .feature-title {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .feature-desc {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--dark-section);
+            position: relative;
+        }
+        
+        .testimonials:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-green));
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: var(--dark-bg);
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            border: 1px solid rgba(57, 255, 20, 0.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card:before {
+            content: ''';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--neon-green);
+            opacity: 0.2;
+            font-family: Arial;
+        }
+        
+        .testimonial-text {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-bg);
+            font-weight: 700;
+        }
+        
+        .author-info h4 {
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--neon-green);
+            font-size: 0.9rem;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 0;
+            background: var(--dark-bg);
+        }
+        
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .pricing-card {
+            background: var(--dark-section);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            flex: 1;
+            min-width: 300px;
+            max-width: 380px;
+            border: 1px solid rgba(57, 255, 20, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.2);
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.featured:before {
+            content: 'MAIS POPULAR';
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--neon-green);
+            color: var(--dark-bg);
+            padding: 5px 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            transform: rotate(45deg);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+        }
+        
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .pricing-header {
+            margin-bottom: 30px;
+        }
+        
+        .pricing-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .pricing-price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .pricing-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .pricing-features {
+            margin-bottom: 30px;
+        }
+        
+        .pricing-feature {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+        
+        .pricing-feature i {
+            color: var(--neon-green);
+            margin-right: 10px;
+        }
+        
+        .pricing-cta {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+        }
+        
+        .pricing-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.5);
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background: var(--dark-section);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 50px auto 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: var(--dark-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: rgba(57, 255, 20, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s;
+            color: var(--neon-green);
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+            color: var(--text-secondary);
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 20px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: linear-gradient(rgba(10, 10, 10, 0.9), rgba(10, 10, 10, 0.9)), url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+            text-align: center;
+            position: relative;
+        }
+        
+        .cta:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+        }
+        
+        .cta-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .cta-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 80px 0 30px;
+            background: var(--dark-bg);
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .footer-logo {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--neon-green);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--dark-section);
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+            color: var(--dark-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.5);
+        }
+        
+        .copyright {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 15px rgba(57, 255, 20, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(57, 255, 20, 0.6); }
+            100% { box-shadow: 0 0 15px rgba(57, 255, 20, 0.3); }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .nav-menu {
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 20px;
+            }
+            
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--dark-bg);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                gap: 15px;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .stats-container {
+                gap: 30px;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+            
+            .pricing-card.featured:hover {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 15px 30px;
+            }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+            
+            .stats-container {
+                gap: 25px;
+            }
+            
+            .stat-number {
+                font-size: 2.8rem;
+            }
+            
+            .pricing-card {
+                min-width: 100%;
+            }
+        }
+        /* Carousel Styles nomes passando*/
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            margin-bottom: 40px;
+            background: linear-gradient(145deg, #1a1f4b, #15193a);
+            padding: 20px 0;
+        }
+        .carousel-title {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #6a93ff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+        
+        .carousel {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            width: calc(2206px * 2);
+        }
+        
+        .carousel-item {
+            width: 2206px;
+            height: 33px;
+            flex-shrink: 0;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(calc(-2206px * 3));
+            }
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #6a93ff;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 10px;
+        }
+        
+        .card-content {
+            line-height: 1.6;
+            color: #ccc;
+        }
+        
+        .highlight {
+            color: #ff7eb3;
+            font-weight: 600;
+        }
+         /* final Carousel Styles nomes passando*/
+
+         /* começo 7 dias de garantia */
+        .sete {
+                background: rgba(14, 43, 9, 0.822);
+                border-radius: 12px;
+                padding: 20px;
+                text-align: center;
+                margin-top: 40px;
+                border: 1px solid rgba(3, 1, 1, 0.987);
+                box-shadow: 0 5px 15px rgb(7, 253, 200);
+            }
+            @media (min-width: 768px) {
+    .sete-16037 .sete-element.sete-element-0223fbf {
+        --content-width: 1350px;
+    }
+    
+}.sete-16037 .sete-element.sete-element-0223fbf, .sete-16037 .sete-element.sete-sete-0223fbf::before
+
+ {
+    --border-transition: 0.3s;
+}
+
+    </style>
 </head>
-
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner"
-        class="show position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-grow text-primary" role="status"></div>
-    </div>
-    <!-- Spinner End -->
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Desbravando o Day Trade</div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#results">Resultados</a></li>
+                <li><a href="#features">Método</a></li>
+                <li><a href="#testimonials">Depoimentos</a></li>
+                <li><a href="#pricing">Planos</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="#pricing" class="header-cta">Começar Agora</a>
+        </div>
+    </header>
 
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-dark py-2 d-none d-md-flex">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
         <div class="container">
-            <div class="d-flex justify-content-between topbar">
-                <div class="top-info">
-                    <small class="me-3 text-white-50"><a href="#"><i
-                                class="fas fa-map-marker-alt me-2 text-secondary"></i></a>Rua Fumio Miyazi, 141
-                        sala 1412 , Boqueião - Praia Grande</small>
-                    <small class="me-3 text-white-50"><a href="#"><i
-                                class="fas fa-envelope me-2 text-secondary"></i></a>tradeemfoco@gmail.com</small>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-bolt"></i> Método Comprovado
                 </div>
-                <div id="note" class="text-secondary d-none d-xl-flex"><small> Entre entre em contato Conosco
-                        ...</small></div>
-                <div class="top-link">
-                    <a href="https://www.youtube.com/@trade-em-foco"
-                        class="bg-light nav-fill btn btn-sm-square rounded-circle"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.instagram.com/trade.em.foco/"
-                        class="bg-light nav-fill btn btn-sm-square rounded-circle"><i
-                            class="fab fa-instagram text-primary"></i></a>
-                </div>
+                <h1 class="hero-title">Domine o Day Trade e Transforme Sua Vida Financeira</h1>
+                <p class="hero-subtitle">Aprenda as estratégias utilizadas pelos traders profissionais para obter resultados consistentes no mercado financeiro e conquiste sua liberdade.</p>
+                <div class="hero-cta">
+                    <a href="#pricing" class="btn btn-primary">Quero me inscrever agora</a>
+                    <a href="#features" class="btn btn-secondary">Ver método</a>            
+                </div>                
             </div>
         </div>
-    </div>
-    <!-- Topbar End -->
-
-    <!-- Navbar Start -->
-    <div class="container-fluid bg-primary">
-        <div class="container">
-            <nav class="navbar navbar-dark navbar-expand-lg py-0">
-                <a href="index.html" class="navbar-brand">
-                    <img src="imagens/icon trade-em-foco/trade-em-foco-branco2.png" alt="logo">
-                </a>
-                <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse bg-transparent" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto mx-xl-auto p-0">
-
-                        <!--<a href="index.html" class="nav-item nav-link active text-secondary">home</a>
-                            <a href="about.html" class="nav-item nav-link">Quem Somos</a>-->
-                        <a href="Mesaproprietaria.html" class="nav-item nav-link">Destravando o Day Trade</a>
-                        <a href="service.html" class="nav-item nav-link">Research</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Produtos</a>
-                            <div class="dropdown-menu rounded">
-                                <a href="testimonial.html" class="dropdown-item">Curso de Day Trade TL</a>
-                                <a href="TradeemfocoEduca.html" class="dropdown-item">Trade em Foco Educa</a>
-                                <a href="testimonial.html" class="dropdown-item">Indicadores do Mercado</a>
-                                <a href="team.html" class="dropdown-item">Recomendações</a>
-                                <a href="SalaPresencial.html" class="dropdown-item">Sala Presencial</a>
-                                <a href="404.html" class="dropdown-item">Copy Trade</a>
-                                <a href="blog.html" class="dropdown-item">Sala Online</a>
-                                <a href="blog.html" class="dropdown-item">Parcerias</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contacto</a>
-                    </div>
-                </div>
-                <div class="d-none d-xl-flex flex-shirink-0">
-                    <div id="phone-tada" class="d-flex align-items-center justify-content-center me-4">
-                        <a href="https://wa.me/5511917312714?text=Ol%C3%A1%2C%20que%20bom%20ter%20seu%20contato%20em%20que%20%20posso%20te%20ajudar%3F"
-                            class="position-relative animated tada infinite">
-                            <i class="fa fa-phone-alt text-white fa-2x"></i>
-                            <div class="position-absolute" style="top: -7px; left: 20px;">
-                                <span><i class="fa fa-comment-dots text-secondary"></i></span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="d-flex flex-column pe-4 border-end">
-                        <span class="text-white-50">Tem alguma dúvida?</span>
-                        <span class="text-secondary">Call: +55 11 91731-2714</span>
-                    </div>
-                    <div class="d-flex align-items-center justify-content-center ms-4 ">
-                        <a href="#"><i class="bi bi-search text-white fa-2x"></i> </a>
-                    </div>
-                </div>
-            </nav>
+     <div class="hero-scroll">
+            <span>Scroll para ver mais</span>
+            <i class="fas fa-chevron-down"></i>
         </div>
-    </div>
-    <!-- Navbar End -->
-
-    <!-- Carousel Start -->
-    <div class="container-fluid px-0">
-        <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active" aria-current="true"
-                    aria-label="First slide"></li>
-                <li data-bs-target="#carouselId" data-bs-slide-to="1" aria-label="Second slide"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active">
-                    <img src="https://i.postimg.cc/JzxgMsmj/fundovitor.png" class="img-fluid" alt="First slide">
-                    <div class="carousel-caption">
-                        <div class="container carousel-content">
-                            <h6 class="text-secondary h4 animated fadeInUp">...</h6>
-                            <h1 class="text-white display-1 mb-4 animated fadeInRight">Destravando o Day Trade.</h1>
-                            <p class="mb-4 text-white fs-5 animated fadeInDown">Consistência e Resultado Acima de Tudo
-                            </p>
-                            <a href="" class="me-2"><button type="button"
-                                    class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn1 animated fadeInLeft">CONHEÇA
-                                    NOSSO CURSO</button></a>
-                            <a href="" class="ms-2"><button type="button"
-                                    class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">FALE
-                                    CONOSCO</button></a>
-                        </div>
-                    </div>
+    </section>
+<section>
+            <div class="carousel-container">
+            <h2 class="carousel-title">Conheça Nossos Resultados</h2>
+            <div class="carousel">
+                <div class="carousel-item">
+                    <img src="https://nandohayne.com.br/wp-content/uploads/2024/06/Frame-1321314574.svg" alt="Resultado 1">
                 </div>
                 <div class="carousel-item">
-                    <img src="imagens/curso-tl/carrossel7.jpg" class="img-fluid" alt="Second slide">
-                    <div class="carousel-caption">
-                        <div class="container carousel-content">
-                            <h6 class="text-secondary h4 animated fadeInUp">...</h6>
-                            <h1 class="text-white display-1 mb-4 animated fadeInLeft">Destravando o Day Trade.</h1>
-                            <p class="mb-4 text-white fs-5 animated fadeInDown">Destrave suas operações no day trade e dê o primeiro passo rumo à consistência.</p>
-                            <p>por apenas <h1>R$19,90</h1></p>
-                            <a href="" class="me-2"><button type="button"
-                                    class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn1 animated fadeInLeft">CONHEÇA
-                                    NOSSO CURSO</button></a>
-                            <a href="" class="ms-2"><button type="button"
-                                    class="px-4 py-sm-3 px-sm-5 btn btn-primary rounded-pill carousel-content-btn2 animated fadeInRight">FALE
-                                    CONOSCO</button></a>
-                        </div>
-                    </div>
+                    <img src="https://nandohayne.com.br/wp-content/uploads/2024/06/Frame-1321314574-1.svg" alt="Resultado 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://nandohayne.com.br/wp-content/uploads/2024/06/Frame-1321314574-2.svg" alt="Resultado 3">
+                </div>
+                <!-- Duplicando para criar efeito contínuo -->
+                <div class="carousel-item">
+                    <img src="https://nandohayne.com.br/wp-content/uploads/2024/06/Frame-1321314574.svg" alt="Resultado 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://nandohayne.com.br/wp-content/uploads/2024/06/Frame-1321314574-1.svg" alt="Resultado 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://nandohayne.com.br/wp-content/uploads/2024/06/Frame-1321314574-2.svg" alt="Resultado 3">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
         </div>
-    </div>
-    <!-- Carousel End -->
-
-
-    <!-- Fact Start 
-    <div class="container-fluid bg-secondary py-5">
+</section>
+    <!-- Results Section -->
+    <section class="results" id="results">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-3 wow fadeIn" data-wow-delay=".1s">
-                    <div class="d-flex counter">
-                        <h1 class="me-4 text-primary counter-value">99</h1>
-                        <h1 class="me-4 text-primary">%</h1>
-                        <h5 class="text-white mt-1">Taxa de satisfação entre nossos traders</h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 wow fadeIn" data-wow-delay=".3s">
-                    <div class="d-flex counter">
-                        <h1 class="me-3 text-primary counter-value">25 </h1>
-                        <h1 class="me-4 text-primary">mil+</h1>
-                        <h5 class="text-white mt-1">Operações bem-sucedidas realizadas</h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 wow fadeIn" data-wow-delay=".5s">
-                    <div class="d-flex counter">
-                        <h1 class="me-3 text-primary counter-value">2000 </h1>
-                        <h1 class="me-4 text-primary"></h1>
-                        <h5 class="text-white mt-1">Traders que confiam e crescem com a Trade em Foco</h5>
-                    </div>
-                </div>
-                <div class="col-lg-3 wow fadeIn" data-wow-delay=".7s">
-                    <div class="d-flex counter">
-                        <h1 class="me-3 text-primary counter-value">1856</h1>
-                        <h5 class="text-white mt-1">Avaliação média dada por nossos membros satisfeitos</h5>
-                    </div>
-                </div>
+            <h2 class="section-title">Resultados <span>Comprovados</span></h2>
+            <div class="stats-container">
+                <div class="stat">
+                    <div class="feature-card">
+                    <div class="stat-number">+2.5K</div>
+                    <div class="stat-label">Alunos</div>
+                </div></div>
+                <div class="stat">
+                    <div class="feature-card">
+                    <div class="stat-number">94%</div>
+                    <div class="stat-label">Taxa de Sucesso</div>
+                </div></div>
+                <div class="stat">
+                     <div class="feature-card">
+                    <div class="stat-number">R$ 18mi+</div>
+                    <div class="stat-label">Volume Negociado</div>
+                </div></div>
+                <div class="stat">
+                    <div class="feature-card">
+                    <div class="stat-number">4.9/5</div>
+                    <div class="stat-label">Avaliações</div>
+                </div></div>
             </div>
         </div>
-    </div>
-      Fact End -->
-
-
-    <!-- About Start -->
-    <div class="container-fluid py-5 my-5">
-        <div class="container pt-5">
-            <div class="row g-5">
-                <div class="col-lg-5 col-md-6 col-sm-12 wow fadeIn" data-wow-delay=".3s">
-                    <div class="h-100 position-relative">
-                        <img src="imagens/curso-tl/tecla01.jpg" class="img-fluid w-75 rounded" alt="" style="margin-bottom: 25%;">
-                        <div class="position-absolute w-75" style="top: 25%; left: 25%;">
-                            <img src="imagens/curso-tl/tecla02.jpg" class="img-fluid w-100 rounded" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-7 col-md-6 col-sm-12 wow fadeIn" data-wow-delay=".5s">
-                    <h5 class="text-primary">Curso Trade em Foco</h5>
-                    <h1 class="mb-4" >Sobre a Trade em Foco e suas soluções inovadoras para o mercado financeiro.</h1>
-                    <p>O mercado não é para quem busca atalhos. É para quem busca consistência. O Curso Trade em Foco foi criado para transformar operadores comuns em traders preparados e conscientes, 
-                        com um método prático, direto ao ponto e comprovado na realidade do dia a dia.<p>
-                    🔹 Do zero ao avançado: mesmo que você nunca tenha operado antes.<br>
-                    🔹 Ensinamos o que realmente funciona: setups validados, gestão de risco e controle emocional.<br>
-                    🔹 Operações reais com explicação didática: você aprende vendo na prática.<br>
-                    🔹 Acesso vitalício e suporte contínuo: aprenda no seu ritmo e tenha onde tirar dúvidas.<br>
-                    🔹 Foco total em mini índice (WIN) e mini dólar (WDO): sem enrolação, direto no que importa.<br>
-Este curso não é para quem quer “ficar rico em 7 dias”. É para quem quer dominar um método que funciona, com disciplina e visão profissional de mercado.<br>
-📈 Mais que teoria: ensinamos como aplicar e colher resultado com consistência. 
-Se você quer evoluir de verdade no trade, o Trade em Foco é o seu próximo passo.<br></p>
-                    <p class="mb-4">Aqui, você desenvolve um plano sólido de trading,
-                        aprende a respeitar seus limites e mantém uma gestão de risco inteligente,
-                        garantindo que seus ganhos superem as perdas de forma consistente.</p>
-                    <a href="https://pay.hub.la/1O82o8OWu0Cj5YoyR3Um" class="btn btn-secondary rounded-pill px-5 py-3 text-white">Falar com um Consultor</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
-
-    <!-- Services Start -->
-    <div class="container-fluid services py-5 mb-5">
+    </section>
+    <!-- Features Section -->
+    <section class="features" id="features">
         <div class="container">
-            <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
-                <h5 class="text-primary">A Proposta</h5>
-                <h1>Quer aprender a operar no mercado de verdade?</h1>
-                <p>Chega de promessas vazias e cursos que só te confundem!
-No Curso TL, você aprende com métodos inovadores, passo a passo, e com uma didática fácil de entender, 
-mesmo que esteja começando do zero.</p>
-            </div>
-            <div class="row g-5 services-inner">
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".3s">
-                    <div class="services-item bg-light">
-                        <div class="p-4 text-center services-content">
-                            <div class="services-content-icon">
-                                <i class="fa fas fa-brain fa-7x mb-4 text-primary"></i>
-                                <h4 class="mb-3"> Estratégias que funcionam</h4>
-                                <p class="mb-4">Torne-se um especialista em operações rápidas no mercado financeiro com
-                                    nosso treinamento completo e prático.</p>
-                                <!--<a href="" class="btn btn-secondary text-white px-5 py-3 rounded-pill">Saiba mais</a>-->
-                            </div>
-                        </div>
+            <h2 class="section-title">O Método <span>Desbravando o Day Trade</span></h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
+                    <h3 class="feature-title">Análise Técnica Avançada</h3>
+                    <p class="feature-desc">Domine os principais indicadores e padrões gráficos para identificar oportunidades de entrada e saída com precisão e confiança.</p>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".5s">
-                    <div class="services-item bg-light">
-                        <div class="p-4 text-center services-content">
-                            <div class="services-content-icon">
-                                <i class="fas fa-graduation-cap fa-7x mb-4 text-primary"></i>
-                                <h4 class="mb-3">Aprendizado de verdade </h4>
-                                <p class="mb-4"> Nada de enrolação, o conteúdo vai direto ao ponto, com estratégias que realmente funcionam.</p>
-                                <!--<a href="" class="btn btn-secondary text-white px-5 py-3 rounded-pill">Saiba mais</a>-->
-                            </div>
-                        </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
                     </div>
+                    <h3 class="feature-title">Psicologia do Trader</h3>
+                    <p class="feature-desc">Desenvolva a mentalidade vencedora necessária para manter a disciplina e controle emocional durante as operações.</p>
                 </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".7s">
-                    <div class="services-item bg-light">
-                        <div class="p-4 text-center services-content">
-                            <div class="services-content-icon">
-                                <i class="fas fa-money-bill fa-7x mb-4 text-primary"></i>
-                                <h4 class="mb-3">Retorno sobre o investimento</h4>
-                                <p class="mb-4">O valor do curso pode ser recuperado com poucas operações bem feitas aplicando o que você aprende.</p>
-                                <!--<a href="" class="btn btn-secondary text-white px-5 py-3 rounded-pill">Saiba mais</a>-->
-                            </div>
-                        </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".3s">
-                    <div class="services-item bg-light">
-                        <div class="p-4 text-center services-content">
-                            <div class="services-content-icon">
-                                <i class="fas fa-lightbulb fa-7x mb-4 text-primary"></i>
-                                <h4 class="mb-3">Método inovador</h4>
-                                <p class="mb-4"> Técnicas exclusivas e adaptadas para o mercado atual, longe de fórmulas ultrapassadas.</p>
-                                <!--<a href="" class="btn btn-secondary text-white px-5 py-3 rounded-pill">Saiba mais</a>-->
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".5s">
-                    <div class="services-item bg-light">
-                        <div class="p-4 text-center services-content">
-                            <div class="services-content-icon">
-                                <i class="fas fa-rocket fa-7x mb-4 text-primary"></i>
-                                <h4 class="mb-3">Didática fácil</h4>
-                                <p class="mb-4">Explicações claras para que até iniciantes consigam entender e aplicar.</p>
-                                <!--<a href="" class="btn btn-secondary text-white px-5 py-3 rounded-pill">Saiba mais</a>-->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".7s">
-                    <div class="services-item bg-light">
-                        <div class="p-4 text-center services-content">
-                            <div class="services-content-icon">
-                                <i class="fas fa-laptop fa-7x mb-4 text-primary"></i>
-                                <h4 class="mb-3"> Suporte e acompanhamento</h4>
-                                <p class="mb-4">Você não estuda sozinho, recebe orientação para tirar dúvidas e ajustar sua evolução.</p>
-                                <!--<a href="" class="btn btn-secondary text-white px-5 py-3 rounded-pill"> Saiba mais</a>-->
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="feature-title">Gestão de Risco</h3>
+                    <p class="feature-desc">Aprenda a proteger seu capital com técnicas avançadas de gestão de risco para maximizar ganhos e minimizar perdas.</p>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Services End -->
-
-
-    <!-- Cartaz do que tem no Curso -->
-    <div class="container-fluid project py-5 mb-5">
-        <div class="container">
-            <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
-                <h5 class="text-primary">Chega de complicar!</h5>
-                <h1>Aprenda de verdade a operar no mercado com um método simples, inovador e direto ao ponto.</h1>
-                <!--<p>Tudo o que você precisa para evoluir no mercado: ferramentas de ponta,
-                    estratégias validadas, mentoria ativa e uma comunidade que opera com foco e resultado.</p>-->
-            </div>
-            <div class="row g-5">
-                <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay=".5s">              
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".3s" style="width: 100% !important;">
-                    <div class="project-item">
-                        <div class="project-img">
-                            <img src="imagens/DESBRAVANDO O DAY TRADE/01.webp" class="img-fluid w-100 rounded" alt="">
-                            <div class="project-content">
-                                <a href="#" class="text-center">
-                                    <h4 class="text-secondary">   </h4>
-                                    <p class="m-0 text-white">   </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".5s"  style="width: 100% !important;">
-                    <div class="project-item">
-                        <div class="project-img">
-                            <img src="imagens/DESBRAVANDO O DAY TRADE/02.webp" class="img-fluid w-100 rounded" alt="">
-                            <div class="project-content">
-                                <a href="#" class="text-center">
-                                    <h4 class="text-secondary">  </h4>
-                                    <p class="m-0 text-white">  </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".7s" style="width: 100% !important;">
-                    <div class="project-item">
-                        <div class="project-img">
-                            <img src="imagens/DESBRAVANDO O DAY TRADE/03.webp" class="img-fluid w-100 rounded" alt="">
-                            <div class="project-content">
-                                <a href="#" class="text-center">
-                                    <h4 class="text-secondary">  </h4>
-                                    <p class="m-0 text-white">  </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".3s" style="width: 100% !important;">
-                    <div class="project-item">
-                        <div class="project-img">
-                            <img src="imagens/DESBRAVANDO O DAY TRADE/04.webp" class="img-fluid w-100 rounded" alt="">
-                            <div class="project-content">
-                                <a href="#" class="text-center">
-                                    <h4 class="text-secondary">  </h4>
-                                    <p class="m-0 text-white">  </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".5s" style="width: 100% !important;">
-                    <div class="project-item">
-                        <div class="project-img">
-                            <img src="imagens/DESBRAVANDO O DAY TRADE/05.webp" class="img-fluid w-100 rounded" alt="">
-                            <div class="project-content">
-                                <a href="#" class="text-center">
-                                    <h4 class="text-secondary">   </h4>
-                                    <p class="m-0 text-white">  </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".7s" style="width: 100% !important;">
-                    <div class="project-item">
-                        <div class="project-img">
-                            <img src="imagens/DESBRAVANDO O DAY TRADE/06.webp" class="img-fluid w-100 rounded" alt="">
-                            <div class="project-content">
-                                <a href="#" class="text-center">
-                                    <h4 class="text-secondary">   </h4>
-                                    <p class="m-0 text-white">   </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".7s" style="width: 100% !important;">
-                    <div class="project-item">
-                        <div class="project-img">
-                            <img src="imagens/DESBRAVANDO O DAY TRADE/07.webp" class="img-fluid w-100 rounded" alt="">
-                            <div class="project-content">
-                                <a href="#" class="text-center">
-                                    <h4 class="text-secondary">   </h4>
-                                    <p class="m-0 text-white">   </p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-               </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>         
-        <div><br>
-            <h1>📚 O que você vai encontrar no Curso TL  Trade Lucrativo</h1><bR>
-            <p style="text-align: left;">✅ Fundamentos do Mercado Financeiro
-Entenda como o mercado funciona e aprenda a linguagem dos traders para operar com segurança.<br>
-
-✅ Análise Gráfica e Técnica
-Domine indicadores, padrões de candles e leitura de mercado para identificar oportunidades lucrativas.<br>
-
-✅ Estratégias Testadas e Aprovadas
-Métodos claros, passo a passo, para aplicar no day trade e swing trade.<br>
-
-✅ Gestão de Risco e Capital
-Proteja seu dinheiro e aprenda a multiplicar seus ganhos com estratégias inteligentes de gerenciamento.<br>
-
-✅ Psicologia do Trader
-Controle emocional e disciplina para manter a consistência e evitar erros comuns.<br>
-
-✅ Operações ao Vivo e Estudos de Caso
-Veja na prática como aplicar as estratégias com exemplos reais de mercado.<br>
-
-✅ Ferramentas e Plataformas
-Aprenda a usar as principais plataformas de operação e análise de forma profissional.<br>
-
-✅ Suporte e Comunidade Exclusiva
-Acesso a um grupo fechado para tirar dúvidas, trocar experiências e acelerar seu aprendizado.</p>
-           <!-- <h3>De R$ 1.997 por apenas R$ 1.297 à vista<br> ou 12x de R$ 131,79</h3>--><br>
-            <a href="https://pay.hub.la/1O82o8OWu0Cj5YoyR3Um" class="btn btn-secondary rounded-pill px-5 py-3 text-white" style="align-content: center;"> Falar com um Consultor </a>
-        </div>
-    </div>
-    <!-- Project End -->
-
-    <!-- PREÇO DO CURSO -->
-
-
-
-    <!-- FINAL DO PREÇO CURSO-->
-
-    <!-- Testimonial Start -->
-    <div class="container-fluid testimonial py-5 mb-5">
-        <div class="container">
-            <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
-                <h5 class="text-primary">Nosso Depoimento</h5>
-                <h1>O que diz o nosso cliente!</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay=".5s">
-                <div class="testimonial-item border p-4">
-                    <div class="d-flex align-items-center">
-                        <div class="">
-                            <img src="img/testimonial-1.jpg" alt="">
-                        </div>
-                        <div class="ms-4">
-                            <h4 class="text-secondary">Carla E</h4>
-                            <p class="m-0 pb-3">Trader Independente</p>
-                            <div class="d-flex pe-5">
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-top mt-4 pt-3">
-                        <p class="mb-0">“Após entrar para a Trade em Foco, percebi o quanto operar sozinho me
-                            limitava.
-                            A estrutura, as mentorias e o acompanhamento diário me deram uma base
-                            sólida.
-                            Hoje, opero com segurança, foco e com uma estratégia clara. Saí da
-                            emoção e entrei
-                            na razão.
-                            A Trade em Foco realmente entrega aquilo que promete para quem leva o
-                            mercado a
-                            sério.”</p>
-                    </div>
-                </div>
-                <div class="testimonial-item border p-4">
-                    <div class=" d-flex align-items-center">
-                        <div class="">
-                            <img src="img/testimonial-2.jpg" alt="">
-                        </div>
-                        <div class="ms-4">
-                            <h4 class="text-secondary">Julio Teixeira</h4>
-                            <p class="m-0 pb-3">Analista Técnico</p>
-                            <div class="d-flex pe-5">
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-top mt-4 pt-3">
-                        <p class="mb-0">"Com a Trade em Foco, minha forma de operar mudou completamente. O sistema é
-                            rápido,
-                            intuitivo e me ajuda a focar no que realmente importa: executar boas operações
-                            com
-                            confiança. Em vez de perder tempo com configurações e análises manuais, hoje
-                            tudo flui com
-                            precisão. É como ter um assistente de alto nível ao meu lado."</p>
-                    </div>
-                </div>
-                <div class="testimonial-item border p-4">
-                    <div class=" d-flex align-items-center">
-                        <div class="">
-                            <img src="img/testimonial-3.jpg" alt="">
-                        </div>
-                        <div class="ms-4">
-                            <h4 class="text-secondary">Patricia Silva</h4>
-                            <p class="m-0 pb-3">Professora</p>
-                            <div class="d-flex pe-5">
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-top mt-4 pt-3">
-                        <p class="mb-0">“A Trade em Foco foi a melhor escolha que fiz na minha trajetória como
-                            trader.
-                            A sala presencial me conectou com profissionais experientes,
-                            o que acelerou meu aprendizado. O conteúdo é objetivo, a metodologia é
-                            prática e o
-                            suporte é contínuo.
-                            Hoje tenho muito mais clareza nas minhas entradas e saídas. Consistência
-                            virou uma
-                            realidade.”</p>
-                    </div>
-                </div>
-                <div class="testimonial-item border p-4">
-                    <div class=" d-flex align-items-center">
-                        <div class="">
-                            <img src="img/testimonial-4.jpg" alt="">
-                        </div>
-                        <div class="ms-4">
-                            <h4 class="text-secondary">Rafael Bezerra</h4>
-                            <p class="m-0 pb-3">Iniciante no Mercado</p>
-                            <div class="d-flex pe-5">
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                                <i class="fas fa-star me-1 text-primary"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-top mt-4 pt-3">
-                        <p class="mb-0">“O ambiente da Trade em Foco é diferente de tudo que já vi no mercado.
-                            É profissional, transparente e com foco em resultado. Os mentores
-                            explicam com
-                            clareza e estão sempre disponíveis.
-                            Evoluí mais em 3 meses aqui do que em 2 anos tentando por conta própria.
-                            A comunidade te impulsiona e a mentalidade muda por completo.”</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Testimonial End -->
-
-
-    <!-- Contact Start -->
-    <div class="container-fluid py-5 mb-5">
-        <div class="container">
-            <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
-                <h5 class="text-primary">Entre em contato</h5>
-                <h1 class="mb-3">Entre em contato para qualquer dúvida</h1>
-                <p class="mb-2">The contact form is currently inactive. Get a functional and working contact form with
-                    Ajax & PHP in a few minutes. Just copy and paste the files, add a little code and you're done. <a
-                        href="https://htmlcodex.com/contact-form">Download Now</a>.</p>
-            </div>
-            <div class="contact-detail position-relative p-5">
-                <div class="row g-5 mb-5 justify-content-center">
-                    <div class="col-xl-4 col-lg-6 wow fadeIn" data-wow-delay=".3s">
-                        <div class="d-flex bg-light p-3 rounded">
-                            <div class="flex-shrink-0 btn-square bg-secondary rounded-circle"
-                                style="width: 64px; height: 64px;">
-                                <i class="fas fa-map-marker-alt text-white"></i>
-                            </div>
-                            <div class="ms-3">
-                                <h4 class="text-primary">Endereço</h4>
-                                <a href="https://goo.gl/maps/Zd4BCynmTb98ivUJ6" target="_blank" class="h5">Rua Fumio
-                                    Miyazi, 141 sala 1412 , Boqueião - Praia Grande/SP</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 wow fadeIn" data-wow-delay=".5s">
-                        <div class="d-flex bg-light p-3 rounded">
-                            <div class="flex-shrink-0 btn-square bg-secondary rounded-circle"
-                                style="width: 64px; height: 64px;">
-                                <i class="fa fa-phone text-white"></i>
-                            </div>
-                            <div class="ms-3">
-                                <h4 class="text-primary">Ligue para nós</h4>
-                                <a class="h5" href="tel:+0123456789" target="_blank">+55 11 91731-2714</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 wow fadeIn" data-wow-delay=".7s">
-                        <div class="d-flex bg-light p-3 rounded">
-                            <div class="flex-shrink-0 btn-square bg-secondary rounded-circle"
-                                style="width: 64px; height: 64px;">
-                                <i class="fa fa-envelope text-white"></i>
-                            </div>
-                            <div class="ms-3">
-                                <h4 class="text-primary">Envie-nos um e-mail</h4>
-                                <a class="h5" href="mailto:info@example.com" target="_blank">tradeemfoco@gmail.com</a>
-                            </div>
-                        </div>
-                    </div>
+    </section>
+    <SEction>
+            <!-- começo Cartaz do que tem no Curso -->
+        <div class="container-fluid project py-5 mb-5">
+            <div class="container">
+                <div class="text-center mx-auto pb-5 wow fadeIn" data-wow-delay=".3s" style="max-width: 600px;">
+                    <h2 class="text-primary"></h2>
+                    <h1>Aprenda de verdade a operar no mercado financeiro</h1>
                 </div>
                 <div class="row g-5">
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay=".3s">
-                        <div class="p-5 h-100 rounded contact-map">
-                            <iframe class="rounded w-100 h-100"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.4710403339755!2d-73.82241512404069!3d40.685622471397615!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c26749046ee14f%3A0xea672968476d962c!2s123rd%20St%2C%20Queens%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1686493221834!5m2!1sen!2sbd"
-                                style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="owl-carousel testimonial-carousel wow fadeIn" data-wow-delay=".5s">
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".3s" style="width: 100% !important;">
+                            <div class="project-item">
+                                <div class="project-img">
+                                    <img src="imagens/DESBRAVANDO O DAY TRADE/01.webp" class="img-fluid w-100 rounded"
+                                        alt="">
+                                    <div class="project-content">
+                                        <a href="#" class="text-center">
+                                            <h4 class="text-secondary"> </h4>
+                                            <p class="m-0 text-white"> </p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".5s" style="width: 100% !important;">
+                            <div class="project-item">
+                                <div class="project-img">
+                                    <img src="imagens/DESBRAVANDO O DAY TRADE/02.webp" class="img-fluid w-100 rounded"
+                                        alt="">
+                                    <div class="project-content">
+                                        <a href="#" class="text-center">
+                                            <h4 class="text-secondary"> </h4>
+                                            <p class="m-0 text-white"> </p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".7s" style="width: 100% !important;">
+                            <div class="project-item">
+                                <div class="project-img">
+                                    <img src="imagens/DESBRAVANDO O DAY TRADE/03.webp" class="img-fluid w-100 rounded"
+                                        alt="">
+                                    <div class="project-content">
+                                        <a href="#" class="text-center">
+                                            <h4 class="text-secondary"> </h4>
+                                            <p class="m-0 text-white"> </p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".3s" style="width: 100% !important;">
+                            <div class="project-item">
+                                <div class="project-img">
+                                    <img src="imagens/DESBRAVANDO O DAY TRADE/04.webp" class="img-fluid w-100 rounded"
+                                        alt="">
+                                    <div class="project-content">
+                                        <a href="#" class="text-center">
+                                            <h4 class="text-secondary"> </h4>
+                                            <p class="m-0 text-white"> </p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".5s" style="width: 100% !important;">
+                            <div class="project-item">
+                                <div class="project-img">
+                                    <img src="imagens/DESBRAVANDO O DAY TRADE/05.webp" class="img-fluid w-100 rounded"
+                                        alt="">
+                                    <div class="project-content">
+                                        <a href="#" class="text-center">
+                                            <h4 class="text-secondary"> </h4>
+                                            <p class="m-0 text-white"> </p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".7s" style="width: 100% !important;">
+                            <div class="project-item">
+                                <div class="project-img">
+                                    <img src="imagens/DESBRAVANDO O DAY TRADE/06.webp" class="img-fluid w-100 rounded"
+                                        alt="">
+                                    <div class="project-content">
+                                        <a href="#" class="text-center">
+                                            <h4 class="text-secondary"> </h4>
+                                            <p class="m-0 text-white"> </p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-4 wow fadeIn" data-wow-delay=".7s" style="width: 100% !important;">
+                            <div class="project-item">
+                                <div class="project-img">
+                                    <img src="imagens/DESBRAVANDO O DAY TRADE/07.webp" class="img-fluid w-100 rounded"
+                                        alt="">
+                                    <div class="project-content">
+                                        <a href="#" class="text-center">
+                                            <h4 class="text-secondary"> </h4>
+                                            <p class="m-0 text-white"> </p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </SEction>
+        <!-- fim Cartaz do que tem no Curso -->
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">O que nossos <span>alunos dizem</span></h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Em apenas 3 meses aplicando as estratégias do curso, consegui minha primeira retirada consistente de R$ 8.500. Estou extremamente grato pela metodologia ensinada!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">RC</div>
+                        <div class="author-info">
+                            <h4>Roberto Costa</h4>
+                            <p>Aluno desde 2023</p>
                         </div>
                     </div>
-                    <div class="col-lg-6 wow fadeIn" data-wow-delay=".5s">
-                        <div class="p-5 rounded contact-form">
-                            <div class="mb-4">
-                                <input type="text" class="form-control border-0 py-3" placeholder="Seu nome">
-                            </div>
-                            <div class="mb-4">
-                                <input type="number" class="form-control border-0 py-3" placeholder="Seu Whatsapp">
-                            </div>
-                            <div class="mb-4">
-                                <input type="email" class="form-control border-0 py-3" placeholder="Seu e-mail">
-                            </div>
-                            <div class="mb-4">
-                                <input type="text" class="form-control border-0 py-3" placeholder="Projeto">
-                            </div>
-                            <div class="mb-4">
-                                <textarea class="w-100 form-control border-0 py-3" rows="6" cols="10"
-                                    placeholder="Mensagem"></textarea>
-                            </div>
-                            <div class="text-start">
-                                <button class="btn bg-primary text-white py-3 px-5" type="button">Enviar
-                                    mensagem</button>
-                            </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Finalmente encontrei um método que realmente funciona! As aulas são claras e objetivas, e a mentoria fez toda a diferença para eu conseguir aplicar na prática."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AM</div>
+                        <div class="author-info">
+                            <h4>Amanda Mendes</h4>
+                            <p>Aluna desde 2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"A parte de psicologia trading mudou completamente minha forma de operar. Hoje consigo manter a disciplina e isso fez toda a diferença nos meus resultados."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">CS</div>
+                        <div class="author-info">
+                            <h4>Carlos Silva</h4>
+                            <p>Aluno desde 2023</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Contact End -->
+    </section>
 
-
-    <!-- Footer Start -->
-    <div class="container-fluid footer bg-dark wow fadeIn" data-wow-delay=".3s">
-        <div class="container pt-5 pb-4">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <a href="index.html">
-                        <h1 class="text-white fw-bold d-block"> <span class="text-secondary"> </span> </h1>
-                        <img src="imagens/icon trade-em-foco/trade-em-foco-branco2.png" alt="logo">
-                    </a>
-                    <p class="mt-4 text-light">Compromisso com a excelência e transparência no mercado financeiro,
-                        oferecendo soluções inovadoras para o sucesso dos traders.</p>
-                    <div class="d-flex hightech-link">
-                        <!--<a href="" class="btn-light nav-fill btn btn-square rounded-circle me-2"><i class="fab fa-facebook-f text-primary"></i></a>
-                            <a href="" class="btn-light nav-fill btn btn-square rounded-circle me-2"><i class="fab fa-twitter text-primary"></i></a>-->
-                        <a href="https://www.instagram.com/trade.em.foco/"
-                            class="btn-light nav-fill btn btn-square rounded-circle me-2"><i
-                                class="fab fa-instagram text-primary"></i></a>
-                        <a href="https://www.youtube.com/@trade-em-foco"
-                            class="btn-light nav-fill btn btn-square rounded-circle me-0"><i
-                                class="fab fa-youtube text-primary"></i></a>
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2 class="section-title">Escolha seu <span>Plano</span></h2>
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Iniciante</h3>
+                        <div class="pricing-price">R$ 997</div>
+                        <p class="pricing-desc">Ideal para quem está começando no day trade</p>
                     </div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Acesso a 10 módulos</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Suporte por e-mail</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Grupo exclusivo</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Material complementar</div>
+                    </div>
+                    <button class="pricing-cta">Selecionar Plano</button>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <a href="#" class="h3 text-secondary">Link curto</a>
-                    <div class="mt-4 d-flex flex-column short-link">
-                        <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Sobre
-                            nós</a>
-                        <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Contact
-                            us</a>
-                        <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Nossos
-                            serviços</a>
-                        <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Nossos
-                            Projetos</a>
-                        <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Blog
-                            mais recente</a>
+                <div class="pricing-card featured">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Profissional</h3>
+                        <div class="pricing-price">R$ 49.90</div>
+                        <p class="pricing-desc">Para quem quer resultados consistentes</p>
                     </div>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Todos os módulos do curso</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Suporte prioritário</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Mentorias semanais</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Sala de sinais exclusiva</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Análises de mercado</div>
+                    </div>
+                    <button class="pricing-cta">Selecionar Plano</button>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <a href="#" class="h3 text-secondary">Link de ajuda</a>
-                    <div class="mt-4 d-flex flex-column help-link">
-                        <a href="" class="mb-2 text-white"><i class="fas fa-angle-right text-secondary me-2"></i>Termos
-                            de uso</a>
-                        <a href="" class="mb-2 text-white"><i
-                                class="fas fa-angle-right text-secondary me-2"></i>política de Privacidade</a>
-                        <a href="" class="mb-2 text-white"><i
-                                class="fas fa-angle-right text-secondary me-2"></i>Ajuda</a>
-                        <a href="" class="mb-2 text-white"><i
-                                class="fas fa-angle-right text-secondary me-2"></i>FQAs</a>
-                        <a href="" class="mb-2 text-white"><i
-                                class="fas fa-angle-right text-secondary me-2"></i>Contato</a>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">VIP</h3>
+                        <div class="pricing-price">R$ 3.497</div>
+                        <p class="pricing-desc">Para quem quer resultados acelerados</p>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <a href="#" class="h3 text-secondary">Contate-nos</a>
-                    <div class="text-white mt-4 d-flex flex-column contact-link">
-                        <a href="#" class="pb-3 text-light border-bottom border-primary"><i
-                                class="fas fa-map-marker-alt text-secondary me-2"></i> Rua Fumio Miyazi, 141
-                            sala 1412 , Boqueião - Praia Grande/SP</a>
-                        <a href="https://wa.me/5511917312714?text=Ol%C3%A1%2C%20que%20bom%20ter%20seu%20contato%20em%20que%20%20posso%20te%20ajudar%3F"
-                            class="py-3 text-light border-bottom border-primary"><i
-                                class="fas fa-phone-alt text-secondary me-2"></i>+55 11 91731-2714</a>
-                        <a href="#" class="py-3 text-light border-bottom border-primary"><i
-                                class="fas fa-envelope text-secondary me-2"></i> tradeemfoco@gmail.com</a>
+                    <div class="pricing-features">
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Todos os benefícios do Profissional</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Mentoria individual</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Análise personalizada</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Acesso vitalício</div>
+                        <div class="pricing-feature"><i class="fas fa-check"></i> Plantão de dúvidas</div>
                     </div>
+                    <button class="pricing-cta">Selecionar Plano</button>
                 </div>
             </div>
-            <hr class="text-light mt-5 mb-4">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <span class="text-light"><a href="#" class="text-secondary"><i
-                                class="fas fa-copyright text-secondary me-2"></i>Trade em foco </a>, All right
-                        reserved.</span>
+        </div>
+    </section>
+    <!-- ===============
+     começo 7 dias de garantia  
+     =========================-->
+    <section>
+        <div class="sete" data-id="sete" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+        <div class="e-con-inner">
+             <div class="feature-card">
+            <div class="sete" data-id="1cb19c5" data-element_type="widget" data-settings="{&quot;_transform_rotateZ_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:3,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:1.03,&quot;sizes&quot;:[]},&quot;_transform_rotateZ_effect_hover_laptop&quot;:{&quot;unit&quot;:&quot;deg&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_rotateZ_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;deg&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_rotateZ_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;deg&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_laptop&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_tablet&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]},&quot;_transform_scale_effect_hover_mobile&quot;:{&quot;unit&quot;:&quot;px&quot;,&quot;size&quot;:&quot;&quot;,&quot;sizes&quot;:[]}}" data-widget_type="image.default">
+                <div class="sete-widget-container">
+                    <img decoding="async" width="351" height="390" src="https://nandohayne.com.br/wp-content/uploads/2024/06/Group-1171275016.svg" class="attachment-large size-large wp-image-7556 entered lazyloaded" alt="" data-lazy-src="https://nandohayne.com.br/wp-content/uploads/2024/06/Group-1171275016.svg" data-ll-status="loaded"><noscript><img loading="lazy" decoding="async" width="351" height="390" src="https://nandohayne.com.br/wp-content/uploads/2024/06/Group-1171275016.svg" class="attachment-large size-large wp-image-7556" alt="" /></noscript>                    </div>
+            </div></div>
+            <div class="sete" data-id="e65fd3a" data-element_type="container" data-settings="{&quot;animation&quot;:&quot;slideInRight&quot;}">
+                <div class="sete" data-id="b35086c" data-element_type="widget" data-widget_type="image-box.default">
+                    <div class="sete-widget-container">
+                         <div class="feature-card">
+                        <div class="sete-image-box-wrapper">
+                            <div class="sete-image-box-content">
+                                <h3 class="elementor-image-box-title">VOCÊ TEM <b>7 DIAS DE GARANTIA</b></h3></div>
+                                <p class="elementor-image-box-description">Se você assistir às aulas e não gostar ou por qualquer outro motivo quiser a devolução do dinheiro, <b>basta solicitar o reembolso</b>! A garantia é incondicional.
+                                    <br><br>
+                                    <b>Você não tem literalmente nenhum risco.</b> Se não fizer sentido pra você, você vai apertar um botão e ter seu dinheiro de volta imediatamente.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    <span class="text-light">Designed By<a href="https://htmlcodex.com" class="text-secondary">HTML
-                            Codex</a> Distributed By <a href="https://themewagon.com">ThemeWagon</a></span>
+                <div class="elementor-element elementor-element-848c965 elementor-align-justify elementor-widget__width-initial hovers elementor-widget elementor-widget-button" data-id="848c965" data-element_type="widget" data-widget_type="button.default">
+                    <div class="elementor-widget-container">
+                        <div class="elementor-button-wrapper">
+                            <a class="elementor-button elementor-button-link elementor-size-sm" href="https://payment.ticto.app/O9094F29B">
+						<span class="elementor-button-content-wrapper">
+									<span class="elementor-button-text">    </span>
+					</span>
+					</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="elementor-element elementor-element-5039fe1 elementor-align-center elementor-widget__width-initial elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="5039fe1" data-element_type="widget" data-widget_type="icon-list.default">
+                    <div class="elementor-widget-container">
+                        <ul class="elementor-icon-list-items">
+                            <li class="elementor-icon-list-item">
+                                <span class="elementor-icon-list-text"><b>     <br>    </b></span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Footer End -->
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2 class="section-title">Perguntas <span>Frequentes</span></h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Preciso ter experiência prévia em day trade? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Não. Nosso curso é desenvolvido para atender tanto iniciantes quanto traders com experiência. Temos módulos específicos para cada nível de conhecimento.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Por quanto tempo tenho acesso ao curso? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        O acesso ao curso é vitalício. Você poderá assistir às aulas quantas vezes quiser e terá acesso a todas as atualizações futuras sem custo adicional.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Qual é o valor mínimo para começar a operar? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Recomendamos começar com pelo menos R$ 1.000,00 para poder aplicar adequadamente as técnicas de gestão de risco ensinadas no curso.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Vocês oferecem garantia? <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Sim. Oferecemos garantia incondicional de 7 dias. Se você não ficar satisfeito com o curso, devolvemos 100% do seu investimento.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2 class="cta-title">Pronto para transformar sua vida?</h2>
+            <p class="cta-subtitle">Junte-se a milhares de traders que já dominaram o mercado financeiro com nosso método comprovado.</p>
+            <a href="#pricing" class="btn btn-primary">Quero me inscrever agora</a>
+        </div>
+    </section>
+
+    
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Desbravando o Day Trade</div>
+            <div class="footer-links">
+                <a href="#home">Início</a>
+                <a href="#results">Resultados</a>
+                <a href="#features">Método</a>
+                <a href="#testimonials">Depoimentos</a>
+                <a href="#pricing">Planos</a>
+                <a href="#faq">FAQ</a>
+                <a href="#">Política de Privacidade</a>
+                <a href="#">Termos de Uso</a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Desbravando o Day Trade. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-menu').classList.remove('active');
+                }
+            });
+        });
+        
+        // FAQ accordion functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .stat, .testimonial-card, .pricing-card').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
+        });
+    </script>
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-secondary btn-square rounded-circle back-to-top"><i
+                class="fa fa-arrow-up text-white"></i></a>
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-secondary btn-square rounded-circle back-to-top"><i
-            class="fa fa-arrow-up text-white"></i></a>
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+    </body>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-</body>
-
-</html>
+    </html>

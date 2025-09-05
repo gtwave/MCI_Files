@@ -580,7 +580,7 @@
 /*** Testimonial Start ***/
 
 .testimonial-item {
-    background: #e3f0eb;
+    background: #1c0606;
 
 }
 
@@ -597,7 +597,7 @@
     margin: 0 5px;
     width: 15px;
     height: 15px;
-    background: #c1dad0;
+    background: #2de009;
     border-radius: 15px;
     transition: .5s;
 }
@@ -617,8 +617,8 @@
 }
 
 .testimonial-carousel .owl-item.center .testimonial-item {
-    background: #FFFFFF !important;
-    box-shadow: 0 0 30px #DDDDDD;
+    background: hsl(233, 98%, 51%) !important;
+    box-shadow: 0 0 30px #a1e213!important;
 }
 .owl-carousel .owl-item img {
     display: block;
