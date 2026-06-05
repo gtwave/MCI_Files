@@ -54,7 +54,7 @@ input int      Risco               = 2;         //#TODO: mudar nome da variavel 
 input int      Risco_Fechamento    = 0;         // Coeficiente de risco para FECHAR operacao
 input double   Trail_stop          = 50.0;      // Distancia do stop movel (em pontos do ativo)
 input bool     ValidationMode = true;  //Quando essa valor for positivo executa o Robot em modo de teste para validar cada regra separada
-input int      ValidationNumber = 1;   //Numero Sequencial da condicao que sera validada durante o teste'
+input int      ValidationNumber = 4;   //Numero Sequencial da condicao que sera validada durante o teste'
 //input double   TempoGrafico        = M3
 
 //==================================================================//
@@ -105,6 +105,13 @@ void ExecutarEstrategia()
          case  3:
             aux = Tendencia();
            break;
+         case  4:
+            aux = RSI_Divergence(CodigoAtivo, PERIOD_M3);
+           break;
+         case  5:
+            aux = RSI_Institutional_Confluence(CodigoAtivo,PERIOD_H3);
+           break; 
+           
          default:
            break;
         }
@@ -159,10 +166,15 @@ void ExecutarEstrategia()
    // Decisao de entrada com base no alinhamento das analises:
    //   v_Analise >= Risco          -> compra
    //   v_Analise <= (Risco * -1)    -> venda
-   if(g_vAnalise >= Risco)
-      AbrirOperacao(DIRECAO_COMPRA);
-   else if(g_vAnalise <= (Risco * -1))
-      AbrirOperacao(DIRECAO_VENDA);
+   
+   if(!ValidationMode)
+     {
+         if(g_vAnalise >= Risco)
+            AbrirOperacao(DIRECAO_COMPRA);
+         else if(g_vAnalise <= (Risco * -1))
+            AbrirOperacao(DIRECAO_VENDA);
+     }
+
 }
 
 //+------------------------------------------------------------------+
@@ -278,25 +290,152 @@ void OnChartEvent(const int32_t id,
 //+------------------------------------------------------------------+
 int PivotRSI()
 {
+   // Precisamos apenas das últimas 3 barras fechadas para avaliar o cruzamento direto
    double bufferRSI[];
-   // Le o RSI do ultimo candle FECHADO (deslocamento 1).
-   if(CopyBuffer(g_handleRSI, 0, 1, 1, bufferRSI) < 1)
+   ArraySetAsSeries(bufferRSI, true); // Índice [0] é o candle fechado mais recente
+   
+   // Lendo as últimas 3 barras fechadas (deslocamento 1 até 3)
+   if(CopyBuffer(g_handleRSI, 0, 1, 3, bufferRSI) < 3)
    {
       Print("[PivotRSI] Erro ao ler o buffer do RSI. Codigo: ", GetLastError());
       return 0;
    }
 
-   double rsi = bufferRSI[0];
-   
-   //if(RSI_hist > 70.0)
-   //  {
-   //   rsi < 70.0 return -1
-   //    //analisar se o RSI vai voltar pra o parametro de entrada
-   //  }
+   double nivelSobrecompra  = 70.0;
+   double nivelSobrevenda   = 30.0;
 
-   if(rsi > 70.0) return -1; // Sobrecomprado -> permite venda
-   if(rsi < 30.0) return  1; // Sobrevendido  -> permite compra
-   return 0;                 // Faixa neutra
+   // -------------------------------------------------------------------------
+   // LÓGICA DE RETORNO DA SOBRECOMPRA (Sinal de Venda)
+   // -------------------------------------------------------------------------
+   // Ponto 1: O candle anterior (ou o anterior a ele) estava acima de 70 (Sobrecomprado)
+   bool esteve_sobrecomprado = (bufferRSI[1] > nivelSobrecompra || bufferRSI[2] > nivelSobrecompra);
+   
+   // Ponto 2: O candle atual [0] fechou CONFIRMANDO o cruzamento para baixo de 70
+   bool cruzou_para_baixo = (bufferRSI[0] <= nivelSobrecompra);
+
+   if(esteve_sobrecomprado && cruzou_para_baixo)
+   {
+      return -1; // Cruzou de volta para dentro: Sinal de Venda
+   }
+
+   // -------------------------------------------------------------------------
+   // LÓGICA DE RETORNO DA SOBREVENDA (Sinal de Compra)
+   // -------------------------------------------------------------------------
+   // Ponto 1: O candle anterior (ou o anterior a ele) estava abaixo de 30 (Sobrevendido)
+   bool esteve_sobrevendido = (bufferRSI[1] < nivelSobrevenda || bufferRSI[2] < nivelSobrevenda);
+   
+   // Ponto 2: O candle atual [0] fechou CONFIRMANDO o cruzamento para cima de 30
+   bool cruzou_para_cima = (bufferRSI[0] >= nivelSobrevenda);
+
+   if(esteve_sobrevendido && cruzou_para_cima)
+   {
+      return 1; // Cruzou de volta para dentro: Sinal de Compra
+   }
+
+   return 0; // Faixa neutra / Sem cruzamento confirmado neste candle
+}
+
+// Retorna: 1 para Divergência de Alta (Compra), -1 para Divergência de Baixa (Venda), 0 para Neutro
+int RSI_Divergence(string symbol, ENUM_TIMEFRAMES timeframe)
+{
+    double rsi[];
+    MqlRates rates[];
+    ArraySetAsSeries(rsi, true);
+    ArraySetAsSeries(rates, true);
+
+    // Precisamos de histórico suficiente (ex: 15 barras) para mapear dois topos/fundos passados
+    if(CopyBuffer(g_handleRSI, 0, 1, 15, rsi) < 15) return 0;
+    if(CopyRates(symbol, timeframe, 1, 15, rates) < 15) return 0;
+
+    // --- IDENTIFICAÇÃO DE TOPOS E FUNDOS NO RSI ---
+    // Encontra o pico mais recente (Pico A) e o anterior (Pico B)
+    int picoA = -1, picoB = -1;
+    int fundoA = -1, fundoB = -1;
+
+    for(int i = 1; i < 14; i++)
+    {
+        // Identifica Topos (Picos) no RSI
+        if(rsi[i] > rsi[i-1] && rsi[i] > rsi[i+1] && rsi[i] > 55.0)
+        {
+            if(picoA == -1) picoA = i;
+            else if(picoB == -1) { picoB = i; break; }
+        }
+        // Identifica Fundos no RSI
+        if(rsi[i] < rsi[i-1] && rsi[i] < rsi[i+1] && rsi[i] < 45.0)
+        {
+            if(fundoA == -1) fundoA = i;
+            else if(fundoB == -1) { fundoB = i; break; }
+        }
+    }
+
+    // --- VALIDAÇÃO DA DIVERGÊNCIA DE BAIXA (VENDA) ---
+    if(picoA != -1 && picoB != -1)
+    {
+        // Preço fez Topo Mais Alto, mas RSI fez Topo Mais Baixo (Divergência Ursina)
+        if(rates[picoA].high > rates[picoB].high && rsi[picoA] < rsi[picoB])
+        {
+            // Gatilho: O RSI atual [0] começou a apontar para baixo
+            if(rsi[0] < rsi[1]) return -1;
+        }
+    }
+
+    // --- VALIDAÇÃO DA DIVERGÊNCIA DE ALTA (COMPRA) ---
+    if(fundoA != -1 && fundoB != -1)
+    {
+        // Preço fez Fundo Mais Baixo, mas RSI fez Fundo Mais Alto (Divergência Touro)
+        if(rates[fundoA].low < rates[fundoB].low && rsi[fundoA] > rsi[fundoB])
+        {
+            // Gatilho: O RSI atual [0] começou a apontar para cima
+            if(rsi[0] > rsi[1]) return 1;
+        }
+    }
+
+    return 0;
+}
+
+// Retorna: 1 se o RSI virar dentro de uma zona institucional de alta, -1 para zona de baixa, 0 para neutro
+int RSI_Institutional_Confluence(string symbol, ENUM_TIMEFRAMES timeframe)
+{
+    double rsi[];
+    ArraySetAsSeries(rsi, true);
+    
+    // Leitura rápida do RSI (últimas 3 barras fechadas)
+    if(CopyBuffer(g_handleRSI, 0, 1, 3, rsi) < 3) return 0;
+    
+    double nivelSobrecompra = 70.0;
+    double nivelSobrevenda  = 30.0;
+    
+    // 1. CHAMA AS FUNÇÕES ANTERIORES DE SMC PARA CONTEXTO
+    int liquidezSMC = CheckLiquiditySweep(symbol);
+    int fvgSMC      = CheckFairValueGap(symbol, timeframe);
+    
+    // 2. AVALIAÇÃO DO GATILHO DE COMPRA CONFLUENTE
+    // O RSI veio da sobrevenda...
+    bool rsi_retornando_da_sobrevenda = (rsi[1] < nivelSobrevenda || rsi[2] < nivelSobrevenda) && (rsi[0] >= nivelSobrevenda);
+    
+    if(rsi_retornando_da_sobrevenda)
+    {
+        // ...Mas só valida se o preço acabou de capturar liquidez de fundo OU está mitigando um FVG de Alta
+        if(liquidezSMC == 1 || fvgSMC == 1)
+        {
+            return 1; // Compra de Alta Probabilidade (Institucional + Varejo Exausto)
+        }
+    }
+    
+    // 3. AVALIAÇÃO DO GATILHO DE VENDA CONFLUENTE
+    // O RSI veio da sobrecompra...
+    bool rsi_retornando_da_sobrecompra = (rsi[1] > nivelSobrecompra || rsi[2] > nivelSobrecompra) && (rsi[0] <= nivelSobrecompra);
+    
+    if(rsi_retornando_da_sobrecompra)
+    {
+        // ...Mas só valida se o preço acabou de capturar liquidez de topo OU está mitigando um FVG de Baixa
+        if(liquidezSMC == -1 || fvgSMC == -1)
+        {
+            return -1; // Venda de Alta Probabilidade
+        }
+    }
+    
+    return 0;
 }
 
 //+------------------------------------------------------------------+
@@ -403,7 +542,148 @@ int Continuidade()
 
    return 0;
 }
+// Função Principal que consolida a matriz de decisão
+int EvaluateSMCStrategy()
+{
+    string symbol = _Symbol;
+    
+    // 1. Valida o Viés Macro (H4)
+    int macroBias = CheckMacroStructure(symbol, PERIOD_H4);
+    if(macroBias == 0) return 0; // Sem direção clara no macro, não opera
+    
+    // 2. Valida se houve varredura de Liquidez (D1/M5)
+    int liquiditySweep = CheckLiquiditySweep(symbol);
+    if(liquiditySweep == 0) return 0; // Sem captura de liquidez, sem trade institucional
+    
+    // 3. Confirma a reversão pelo Micro CHoCH (M5)
+    int microChoch = CheckMicroCHoCH(symbol, PERIOD_M5);
+    
+    // 4. Identifica a mitigação na Ineficiência/FVG (M5)
+    int fvgStatus = CheckFairValueGap(symbol, PERIOD_M5);
+    
+    // CONFLUÊNCIA DE COMPRA
+    // Viés de Alta E Liquidez Capturada no Fundo E Confirmação Micro de Alta
+    if(macroBias == 1 && liquiditySweep == 1 && microChoch == 1 && fvgStatus == 1)
+    {
+        return 1; 
+    }
+    
+    // CONFLUÊNCIA DE VENDA
+    // Viés de Baixa E Liquidez Capturada no Topo E Confirmação Micro de Baixa
+    if(macroBias == -1 && liquiditySweep == -1 && microChoch == -1 && fvgStatus == -1)
+    {
+        return -1;
+    }
+    
+    return 0; // Neutro se qualquer um dos passos falhar na confluência
+}
 
+// Retorna: 1 se existe um FVG de Alta ativo, -1 se existe um FVG de Baixa ativo
+int CheckFairValueGap(string symbol, ENUM_TIMEFRAMES timeframe)
+{
+    MqlRates rates[];
+    ArraySetAsSeries(rates, true);
+    
+    // Analisa o padrão de 3 candles consecutivos
+    if(CopyRates(symbol, timeframe, 0, 4, rates) < 4) return 0;
+    
+    // FVG de Alta: A mínima do Candle 1 é maior que a máxima do Candle 3
+    if(rates[1].low > rates[3].high)
+    {
+        // Se o preço atual (Candle 0) estiver testando essa região de gap
+        if(rates[0].low <= rates[1].low && rates[0].close >= rates[3].high)
+        {
+            return 1; // Região de FVG de alta validada para entrada
+        }
+    }
+    
+    // FVG de Baixa: A máxima do Candle 1 é menor que a mínima do Candle 3
+    if(rates[1].high < rates[3].low)
+    {
+        // Se o preço atual (Candle 0) estiver testando essa região de gap
+        if(rates[0].high >= rates[1].high && rates[0].close <= rates[3].low)
+        {
+            return -1; // Região de FVG de baixa validada para entrada
+        }
+    }
+    
+    return 0;
+}
+
+// Retorna: 1 para CHoCH de Alta, -1 para CHoCH de Baixa, 0 para Neutro
+int CheckMicroCHoCH(string symbol, ENUM_TIMEFRAMES timeframe)
+{
+    MqlRates rates[];
+    ArraySetAsSeries(rates, true);
+    
+    // Copia candles recentes do micro timeframe (ex: M1 ou M5)
+    if(CopyRates(symbol, timeframe, 0, 10, rates) < 10) return 0;
+    
+    // Detecta CHoCH de Alta: Rompimento do último topo de uma micro tendência de baixa
+    double microTopo = MathMax(rates[2].high, rates[3].high);
+    if(rates[1].close > microTopo && rates[3].close < rates[4].close)
+    {
+        return 1; // Mudança de caráter para alta
+    }
+    
+    // Detecta CHoCH de Baixa: Rompimento do último fundo de uma micro tendência de alta
+    double microFundo = MathMin(rates[2].low, rates[3].low);
+    if(rates[1].close < microFundo && rates[3].close > rates[4].close)
+    {
+        return -1; // Mudança de caráter para baixa
+    }
+    
+    return 0;
+}
+
+// Retorna: 1 se capturou liquidez de venda (Pronto para COMPRA), -1 se capturou liquidez de compra (Pronto para VENDA)
+int CheckLiquiditySweep(string symbol)
+{
+    MqlRates dailyRates[];
+    MqlRates currentRates[];
+    ArraySetAsSeries(dailyRates, true);
+    ArraySetAsSeries(currentRates, true);
+    
+    // Obtém o candle diário anterior [1] e o candle atual do M5 [0]
+    if(CopyRates(symbol, PERIOD_D1, 1, 1, dailyRates) < 1) return 0;
+    if(CopyRates(symbol, PERIOD_M5, 0, 1, currentRates) < 1) return 0;
+    
+    double previousDayHigh = dailyRates[0].high;
+    double previousDayLow  = dailyRates[0].low;
+    
+    // Varredura de Alta: Preço subiu acima da máxima diária e fechou abaixo dela
+    if(currentRates[0].high > previousDayHigh && currentRates[0].close < previousDayHigh)
+    {
+        return -1; // Liquidez capturada no topo -> Possível Venda
+    }
+    
+    // Varredura de Baixa: Preço desceu abaixo da mínima diária e fechou acima dela
+    if(currentRates[0].low < previousDayLow && currentRates[0].close > previousDayLow)
+    {
+        return 1;  // Liquidez capturada no fundo -> Possível Compra
+    }
+    
+    return 0;
+}
+
+// Retorna: 1 para Tendência de Alta, -1 para Baixa, 0 para Lateral
+int CheckMacroStructure(string symbol, ENUM_TIMEFRAMES timeframe)
+{
+    MqlRates rates[];
+    ArraySetAsSeries(rates, true);
+    
+    // Copia as últimas 5 barras do timeframe macro (ex: H4)
+    if(CopyRates(symbol, timeframe, 0, 5, rates) < 5) return 0;
+    
+    // Lógica simplificada de Direção: Topos e Fundos Ascendentes/Descendentes
+    bool highers = (rates[1].high > rates[2].high) && (rates[2].high > rates[3].high);
+    bool lowers  = (rates[1].low < rates[2].low) && (rates[2].low < rates[3].low);
+    
+    if(highers && rates[1].close > rates[2].high) return 1;  // Estrutura de Alta (BMS)
+    if(lowers  && rates[1].close < rates[2].low)  return -1; // Estrutura de Baixa (BMS)
+    
+    return 0;
+}
 //==================================================================//
 //  SECAO 6 - GERENCIAMENTO DA POSICAO ABERTA                        //
 //==================================================================//
